@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Delete Providers
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid text-center">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            <h3> Are you sure that you want to delete{{ provider.name }}
+                                ?</h3>
+                            <button type="submit" class="btn btn-primary">Yes</button>
+                            <a href='{% url 'list-of-providers' %}' class="btn btn-secondary">No</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

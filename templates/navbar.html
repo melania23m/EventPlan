@@ -1,0 +1,99 @@
+<nav class="navbar bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="https://cdn.logojoy.com/wp-content/uploads/2018/05/30163918/1241.png" alt="" width="100"
+                 height="50" class="d-inline-block align-text-top">
+            EventPlan
+        </a>
+
+
+        <a href="{% url 'home' %}" class="btn btn-warning float-right ">Home</a>
+
+        <a class="nav-link" href="#">Link</a>
+
+
+        <a href="#" id="navbarDropdown" role="button"
+           data-bs-toggle="dropdown" aria-expanded="false">
+            Provider
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+        </li>
+        </ul>
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+    </div>
+</nav>
+
+
+{##}
+{##}
+{#<div class="col-md-12 col-sm-12 col-xs-12">#}
+{#    <nav class="navbar navbar-expand-lg bg-light">#}
+{##}
+{##}
+{#        <div class="logo>">#}
+{#            <a href="{% url 'home' %}" class="col-md-12 bg-light text-left">#}
+{#                <img src="https://cdn.logojoy.com/wp-content/uploads/2018/05/30163918/1241.png"#}
+{#                     class="ls-is-cached lazyloaded" width="349" height="152">#}
+{#            </a>#}
+{##}
+{#        </div>#}
+{#        <ul id="primary-menu" class="primary-menu">#}
+{#            <li id="menu-item-9463"#}
+{#                class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item">#}
+{#                <a href="{% url 'home' %}" class="btn btn-warning float-right ">Home</a>#}
+{#            </li>#}
+{#            <li id="menu-item-9632" class="menu-item menu-item-type-custom menu-item-object-custom">#}
+{#                <a href="{% url 'create-user' %}" class="btn btn-warning float-right ">Sign Up</a>#}
+{#            </li>#}
+{#            <li class="nav-item dropdown">#}
+{#                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"#}
+{#                   data-bs-toggle="dropdown" aria-expanded="false">#}
+{#                    Provider#}
+{#                </a>#}
+{#                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">#}
+{##}
+{#                    <li><a class="dropdown-item" href="{% url "create-provider" %}">Create a New Provider</a>#}
+{#                    </li>#}
+{##}
+{##}
+{#                    <li><a class="dropdown-item" href="{% url "list-of-providers" %}">List of Providers</a>#}
+{#                    </li>#}
+{##}
+{#                </ul>#}
+{#            </li>#}
+{##}
+{#            {% if user.is_authenticated %}#}
+{#                <div class="btn-group dropstart">#}
+{#                    <button class="btn btn-warning float-right " type="button" data-bs-toggle="dropdown"#}
+{#                            aria-expanded="false">#}
+{#                        My profile#}
+{#                    </button>#}
+{#                    <ul class="dropdown-menu">#}
+{#                        <li><a class="dropdown-item"#}
+{#                               href='{% url 'logout' %}'>Logout, {{ request.user.username }}</a>#}
+{#                        </li>#}
+{#                        <li><a class="dropdown-item" href="{% url 'password_change' %}">Change password</a></li>#}
+{##}
+{#                    </ul>#}
+{#                </div>#}
+{#            {% else %}#}
+{#                <a href="{% url 'login' %}" class="btn btn-outline-primary">Login</a>#}
+{#                <a href="{% url 'create-user' %}" class="btn btn-outline-primary">Sign up</a>#}
+{##}
+{#            {% endif %}#}
+{#        </ul>#}
+{#    </nav>#}
+{#</div>#}

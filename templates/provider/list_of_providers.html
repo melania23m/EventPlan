@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% block title %}
+    List of providers
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <form method="get">
+                    {{ my_filter.form }}
+                    <button type="submit" class="'btn btn-outline-success">Search</button>
+                    <a href="{% url 'list-of-providers' %}" class="btn btn-outline-danger">Reset</a>
+                </form>
+            </div>
+            <div class="col-md-8">
+                {% if all_providers %}
+                    <div class="row">
+                        <div>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for provider in all_providers %}
+                                    <tr>
+                                        <td>{{ provider.name }}</td>
+                                        <td>{{ provider.start_date|date:"d-m-Y H:i" }}</td>
+                                        <td>{{ provider.end_date|date:"d-m-Y H:i" }}</td>
+
+                                        <td>
+
+                                            <div class="dropdown">
+                                                <button class="btn btn-primary dropdown-toggle" type="button"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Actions
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    {% if perms.provider.update_provider %}
+                                                        <li><a class="dropdown-item"
+                                                               href="{% url 'update-provider' provider.id %}"
+                                                        >Update</a></li>
+                                                    {% endif %}
+                                                    {% if perms.provider.detail_provider %}
+                                                        <li><a class="dropdown-item"
+                                                               href="{% url 'detail-provider' provider.id %}"
+                                                        >Details</a></li>
+                                                    {% endif %}
+                                                    {% if perms.provider.delete_provider %}
+                                                        <li><a class="dropdown-item"
+                                                               href="{% url 'delete-provider' provider.id %}"
+                                                        >Delete</a></li>
+
+
+
+                                                        <li>
+                                                        <button type="button" class="dropdown-item"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#provider_{{ provider.id }}">
+                                                            Delete-modal
+                                                        </button>
+                                                    {% endif %}
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                            <div class="modal fade" id="student_{{ provider.id }}" tabindex="-1"
+                                                 aria-labelledby="exampleModalLabel"
+                                                 aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                                Delete</h5>
+                                                            <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal"
+                                                                    aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Are you sure you want to
+                                                            delete {{ provider.name }}?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">
+                                                                No
+                                                            </button>
+                                                            <a href='{% url 'delete-provider-modal' provider.id %}'
+                                                               class='btn btn-danger'>Yes</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                {% else %}
+                    <h3 class="text-center">No data avaible</h3>
+                    </div>
+                    </div>
+                {% endif %}
+
+
+
+{% endblock %}
