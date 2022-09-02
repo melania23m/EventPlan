@@ -8,7 +8,7 @@ class ProviderForm(forms.ModelForm):
     class Meta:
         model = Provider
 
-        fields = ['name','email','city', 'description']
+        fields = ['name','email','city', 'description', 'image']
 
 
         widgets = {
@@ -19,3 +19,7 @@ class ProviderForm(forms.ModelForm):
 
 
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['image'].widget.attrs['class'] = 'form-control'
