@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 
+import django_heroku
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -38,6 +41,8 @@ INSTALLED_APPS = [
     'home',
     'userextend',
     'providers',
+    'event',
+    'todo_app'
 
 ]
 
@@ -77,11 +82,25 @@ WSGI_APPLICATION = 'finalProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME': 'dicotk7bcqsrd',
+
+        'USER': 'yqkblosxkwfuhw',
+
+        'PASSWORD': os.environ['DB_PASSWORD'],
+
+        'HOST': 'ec2-34-252-216-149.eu-west-1.compute.amazonaws.com',
+
+        'PORT': '5432',
     }
 }
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -128,10 +147,4 @@ MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login/'
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#
-# EMAIL_HOST = 'mail.gmail.com'
-# EMAIL_HOST_USER = 'melania23m@gmail.com'
-# EMAIL_HOST_PASSWORD = 'mentos22312'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
+django_heroku.settings(locals())
