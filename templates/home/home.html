@@ -1,8 +1,46 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %} Home {% endblock %}
 {% block content %}
-    <div >
-        <h1 class="elementor-heading-title elementor-size-default" >Organization of your event starts here </h1>
+    <body id='bg' style="background-image: url('{% static "images/background2.jpg" %}');"
+          xmlns="http://www.w3.org/1999/html">
+    <div>
+        <h1 class="elementor-heading-title elementor-size-default">Organization of your event starts here </h1>
     </div>
+
+    {% if user.is_authenticated %}
+        <br><br><br>
+        <h5>Hello, {{ request.user.username }}</h5>
+        <br><br><br>
+    </br>
+        <div class="position-relative">
+            <div class="position-absolute top-50 start-50 translate-middle">
+                <li><a class="btn btn-outline dark" href="{% url "create-event" %}">Create Your Event Here</a>
+                </li>
+                <li><a class="btn btn-outline dark" href="{% url "list-of-events" %}">Your Events Here</a>
+                </li>
+            </div>
+        </div>
+    {% else %}
+        <div class="position-relative">
+            <div class="position-absolute top-50 start-50 translate-middle">
+                <br>
+                <br>
+                <br>
+                <a href="{% url 'login' %}" class="btn btn-warning float-right ">Login</a>
+                <a href="{% url 'create-user' %}" class="btn btn-warning float-right ">Sign up</a>
+                <br>
+                <br>
+                <br>
+
+            </div>
+
+        </div>
+        </body>
+
+
+
+
+    {% endif %}
 {% endblock %}

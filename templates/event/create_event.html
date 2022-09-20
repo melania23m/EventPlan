@@ -1,10 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Create your event {% endblock %}
+
+{% block content %}
+    <body id='bg' style="background-image: url('{% static "images/background2.jpg" %}');"
+    <div class = "container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3"><br><br>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class ="text-center"> Your Event</h3>
+                    </div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="card-body">
+                            {{ form.as_p}}
+                        </div>
+                        <div class="card-footer text-center">
+                             <a href="{% url 'list-of-events' %}" class="btn btn-outline-danger">Save</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+
+
+
+
+{% endblock %}

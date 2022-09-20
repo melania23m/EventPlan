@@ -1,10 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    My events
+{% endblock %}
+
+{% block content %}
+    <body id='bg' style="background-image: url('{% static "images/background2.jpg" %}');"
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-4">
+                <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end">
+                    <nav class="nav nav-pills flex-column">
+                        <a class="btn btn-dark btn-lg" href="#item-1">Your event</a>
+                        <nav class="nav nav-pills flex-column">
+                            <a class="btn btn-outline-dark " href="#item-1-1">Sumar</a>
+                            <a class="btn btn-outline-dark " href="{% url 'user-checked' %}">Actions to do</a>
+                            <a class="btn btn-outline-dark " href="{% url 'budget' %}">Budget</a>
+                            <a class="btn btn-outline-dark " href="#">Guests</a>
+                        </nav>
+                        <br>
+                        <a class="btn btn-outline-dark btn-lg" href="{% url "list-of-providers" %}">Providers</a>
+                    </nav>
+                </nav>
+                </nav>
+            </div>
+            <div class="col-8">
+                <div class="row">
+                    <body class="container text-center">
+                    <br class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+                    <div class="col">
+
+                        <div class="p-3 border bg-light">{{ event.name }}</div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 border bg-light">{{ event.event_date }}</div>
+                    </div>
+                    <div class="col">
+                        <div class="p-3 border bg-light">{{ event.location }}</div>
+                    </div>
+                    <div class="col">
+                        <a class="btn btn-outline-dark" href="{% url 'update-event' event.id %}" role="button">Click
+                            to change details</a>
+                    </div>
+                    </br>
+                    </body>
+
+{% endblock %}

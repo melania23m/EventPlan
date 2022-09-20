@@ -21,11 +21,14 @@ from userextend.forms import AuthenticationLoginForm, PasswordChangeFormExtend, 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
+    path('',include('event.urls')),
+    path('',include('todo_app.urls')),
+
     path('login/', LoginView.as_view(form_class=AuthenticationLoginForm), name='login'),
     path('password_change/', PasswordChangeView.as_view(form_class=PasswordChangeFormExtend), name='password_change'),
     path('password_reset/', PasswordResetView.as_view(form_class=PasswordResetFormExtend), name='password_reset'),
-    path('',include('django.contrib.auth.urls')),
-
-    path('', include('providers.urls')),
+    path('', include('django.contrib.auth.urls')),
     path('', include('userextend.urls')),
+    path('', include('providers.urls')),
+
 ]

@@ -4,8 +4,9 @@ from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DetailView
 
+from providers.filters import ProviderFilter
 from providers.forms import ProviderForm
-from providers.models import Provider
+from providers.models import Provider, Rating
 
 
 class ProviderCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
@@ -22,6 +23,18 @@ class ProviderListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Provider
     context_object_name = 'all_providers'
     permission_required = 'provider.view_provider'
+
+    def get_context_data(self, **kwargs):
+        data = super(ProviderListView, self).get_context_data(**kwargs)
+
+
+        providers = Provider.objects.all()
+        myFilter = ProviderFilter(self.request.GET, queryset = providers )
+        data['all_providers'] = myFilter.qs
+        data['my_filter'] = myFilter
+
+        return data
+
 
 #
 class ProviderUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
@@ -46,4 +59,7 @@ def delete_provider(request, pk):
 
     return redirect('list-of-providers')
 
-
+def rating(request, provider_id):
+    rating_number = request.POST.get('rating')
+    rating = Rating.objects.create(provider= provider_id, user= request.user, number= rating_number )
+    return redirect ('detail-provider', pk= provider_id)

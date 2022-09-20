@@ -7,29 +7,30 @@
         </a>
 
 
-        <a href="{% url 'home' %}" class="btn btn-warning float-right ">Home</a>
+        <a href="{% url 'home' %}" class="btn btn-outline dark">Home</a>
 
         <div class="btn-group dropstart">
-            <button class="btn btn-warning float-right " type="button" data-bs-toggle="dropdown"
+            <button class="btn btn-outline dark" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
                 Providers
             </button>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                {% if perms.student.add_student %}
+                {% if user.is_superuser %}
 
-                <li><a class="dropdown-item" href="{% url "create-provider" %}">Create a New Provider</a>
-                </li>
+                    <li><a class="dropdown-item" href="{% url "create-provider" %}">Create a New Provider</a>
+                    </li>
+                {% endif %}
 
                 <li><a class="dropdown-item" href="{% url "list-of-providers" %}">List of Providers</a>
                 </li>
-                {% endif %}
+
             </ul>
         </div>
 
 
         {% if user.is_authenticated %}
             <div class="btn-group dropstart">
-                <button class="btn btn-warning float-right " type="button" data-bs-toggle="dropdown"
+                <button class="btn btn-outline dark " type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
                     My profile
                 </button>
@@ -42,8 +43,8 @@
                 </ul>
             </div>
         {% else %}
-            <a href="{% url 'login' %}" class="btn btn-warning float-right ">Login</a>
-            <a href="{% url 'create-user' %}" class="btn btn-warning float-right ">Sign up</a>
+            {#            <a href="{% url 'login' %}" class="btn btn-warning float-right ">Login</a>#}
+            {#            <a href="{% url 'create-user' %}" class="btn btn-warning float-right ">Sign up</a>#}
 
 
         {% endif %}

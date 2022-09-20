@@ -29,5 +29,13 @@
             </div>
         </div>
     </div>
+    <form action="{% url 'create-rating' provider.id %}">
+        <input type="number" name="number" required="" id="id_number">
+        <input type="submit" value="Save">
+
+    </form>
+
+
+    #create_rating
     <div class="container text-center"><a href="{% url 'list-of-providers' %}" class='btn btn-outline-primary'>Cancel</a></div>
 {% endblock %}

@@ -1,10 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    My events
+{% endblock %}
+
+{% block content %}
+    <body id='bg' style="background-image: url('{% static "images/background2.jpg" %}');"
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-4">
+                <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end">
+                   <nav class="nav nav-pills flex-column">
+                        <a class="btn btn-outline-dark btn-lg" href="#item-1">Your event</a>
+                        <a class="btn btn-outline-dark " href="{% url "list-of-providers" %}">Providers</a>
+                        <a class="btn btn-outline-dark " href="#">My account</a>
+                        </nav>
+                    </nav>
+                </nav>
+            </div>
+            <div class="col-8">
+                <div class="row">
+                    <h5> My events </h5>
+                    {% for event in all_events %}
+                        <div class="col-md-3">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ event.name }} </h5>
+                                <p class="card-text"> {{ event.location }}</p>
+                                <p class="card-text"> {{ event.event_date }}</p>
+                                <div class="dropdown">
+                                    <button class="btn btn-outline-dark  dropdown-toggle" type="button"
+                                            data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{% url 'update-event' event.id %}"
+                                        >Update</a></li>
+
+                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
+                                                data-bs-target="#event_{{ event.id }}">
+                                            Delete
+                                        </button>
+                                    </ul>
+
+                                    <div class="modal fade" id="event_{{ event.id }}" tabindex="-1"
+                                         aria-labelledby="exampleModalLabel"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Are you sure you want to
+                                                    delete {{ event.name }} ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <a href='{% url 'delete-event-modal' event.id %}'
+                                                       class='btn btn-danger'>Yes</a>
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">
+                                                        No
+                                                    </button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="btn btn-dark" href="{% url 'detail-event' event.id %}" role="button">Click here
+                                for details</a>
+                        </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+{% endblock %}
