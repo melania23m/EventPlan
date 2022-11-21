@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class UserextendConfig(AppConfig):
+class UserexdConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'userextend'

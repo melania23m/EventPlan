@@ -38,11 +38,11 @@
                                                 <li><a class="dropdown-item" href="{% url 'update-provider' provider.id %}"
                                                 >Update</a></li>
                                             {% endif %}
-                                            {% if perms.provider.detail_provider %}
+
 
                                                 <li><a class="dropdown-item" href="{% url 'detail-provider' provider.id %}"
                                                 >Details</a></li>
-                                            {% endif %}
+
                                             {% if perms.provider.delete_provider %}
 
                                                 <button type="button" class="dropdown-item" data-bs-toggle="modal"

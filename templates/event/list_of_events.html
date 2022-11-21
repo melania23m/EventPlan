@@ -36,41 +36,13 @@
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="{% url 'update-event' event.id %}"
                                         >Update</a></li>
-
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                                data-bs-target="#event_{{ event.id }}">
-                                            Delete
-                                        </button>
+                                        <li><a class="dropdown-item" href="{% url 'delete-event' event.id %}"
+                                        >Delete</a></li>
                                     </ul>
 
-                                    <div class="modal fade" id="event_{{ event.id }}" tabindex="-1"
-                                         aria-labelledby="exampleModalLabel"
-                                         aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Are you sure you want to
-                                                    delete {{ event.name }} ?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <a href='{% url 'delete-event-modal' event.id %}'
-                                                       class='btn btn-danger'>Yes</a>
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-bs-dismiss="modal">
-                                                        No
-                                                    </button>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
+
                             <a class="btn btn-dark" href="{% url 'detail-event' event.id %}" role="button">Click here
                                 for details</a>
                         </div>

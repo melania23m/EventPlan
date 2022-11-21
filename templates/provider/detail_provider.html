@@ -19,23 +19,70 @@
                     <tr>
                         <td>{{ provider.name }}</td>
 
+
                     </tr>
+                    <img src="{{ provider.image.url }}" class=" card-img-top" alt="..." width="150px">
+                    <p class="mt-1 text-gray-400">Rating: {{ provider.get_rating }} / 6</p>
+
 
                     </tbody>
                 </table>
 
-                    <h4>{{ provider.name }} </h4><br><br>
+                <h4>{{ provider.name }} </h4><br><br>
 
             </div>
         </div>
     </div>
-    <form action="{% url 'create-rating' provider.id %}">
-        <input type="number" name="number" required="" id="id_number">
-        <input type="submit" value="Save">
+    {#    <a href="{% url 'create-review' provider.id %}" class='btn btn-outline-primary'>Add Review</a>#}
 
-    </form>
+    {#    <div class="container text-center"><a href="{% url 'list-of-providers' %}"#}
+    {#                                          class='btn btn-outline-primary'>Cancel</a></div>#}
+    <div class="container text-center"><br><br>
+        <h2 class="text-xl">Reviews</h2>
+
+        {% if request.user.is_authenticated %}
+            <form method="post" action="." class="container text-center">
+                {% csrf_token %}
+
+                <div>
+                    <label>Rating</label><br>
+                    <select name="rating">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3" selected>3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+
+                    </select>
+                </div>
+                <div>
+                    <label>Comment</label><br>
+                    <textarea name="content"></textarea>
+                </div>
+
+                <div>
+                    <button>Submit</button>
+                    <br>
+
+                </div>
+
+            </form>
+
+        {% endif %}
 
 
-    #create_rating
-    <div class="container text-center"><a href="{% url 'list-of-providers' %}" class='btn btn-outline-primary'>Cancel</a></div>
+        {% for review in provider.reviews.all %}
+            <div class="col-md-3">
+                <div class="card" style="width: 18rem;">
+                <strong>Rating: </strong> {{ review.rating }}/6<br>
+                <strong>Date: </strong> {{ review.created_at|date:"d-m-y"}}
+                <strong>Created by: </strong> {{ review.created_by}}
+                <strong>Comment: </strong><br>
+                {{ review.content }}
+                </div>
+
+            </div>
+        {% endfor %}
+        </div>
 {% endblock %}

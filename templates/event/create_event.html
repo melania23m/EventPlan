@@ -16,8 +16,12 @@
                         <div class="card-body">
                             {{ form.as_p}}
                         </div>
-                        <div class="card-footer text-center">
-                             <a href="{% url 'list-of-events' %}" class="btn btn-outline-danger">Save</a>
+                        <div class="card-footer">
+                            <a class="btn btn-outline-primary" style="width: 150px"
+                                   href="{% url 'list-of-events' %}">Cancel</a>
+                            <button type="submit" class="btn btn-outline-primary float-end" style="width: 150px">
+                                    Save
+                            </button>
                         </div>
 
                     </form>

@@ -4,9 +4,10 @@
 {% endblock %}
 
 {% block content %}
-    <form action="" method="POST">
-        {% csrf_token %}
+    <form method="post" action="." class="container text-center">
 
+    {% csrf_token %}
+    {% for budget in all_budgets %}
     <table class="table table-striped table-hover table-bordered">
         <thead>
         <tr>
@@ -17,6 +18,18 @@
         </tr>
         </thead>
         <tbody>
+        <tr>
+            <td>{{ budget.denumire }}</td>
+            <td>{{ budget.cost_total}}</td>
+            <td>{{ budget.avans}}</td>
+            <td>{{ budget.get_budget }} </td>
 
+
+        </tr>
+
+
+        </tbody>
+    </table>
+    {% endfor %}
 
 {% endblock %}

@@ -1,7 +1,10 @@
 from django import forms
 from django.forms import TextInput, Textarea, EmailInput, DateTimeInput, Select
-
+from django.contrib.auth.forms import UserCreationForm
 from providers.models import Provider
+
+
+# from userextend.models import User
 
 
 class ProviderForm(forms.ModelForm):
@@ -23,3 +26,16 @@ class ProviderForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['image'].widget.attrs['class'] = 'form-control'
+
+
+
+# class ReviewAdd(forms.ModelForm):
+#     class Meta:
+#         model = ProviderReview
+#         fields = ['review_text', 'review_rating']
+#         widgets = {
+#             'review_text': TextInput(attrs={'placeholder': 'Please enter your review text', 'class': 'form-control'}),
+#
+#         }
+#
+

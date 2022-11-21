@@ -1,20 +1,22 @@
 {% extends 'base.html' %}
-{% block title %} Create a new provider {% endblock %}
+{% load static %}
+{% block title %} Create review {% endblock %}
 
 {% block content %}
+    <body id='bg' style="background-image: url('{% static "images/background2.jpg" %}');"
     <div class="container">
         <div class="row">
             <div class="col-md-6 offset-md-3"><br><br>
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="text-center"> Create a new provider</h3>
+                        <h3 class="text-center"> Your Review</h3>
                     </div>
-                    <form method="post">
+                    <form method="post" >
                         {% csrf_token %}
                         <div class="card-body">
                             {{ form.as_p }}
                         </div>
-                        <div class="card-footer">
+                       <div class="card-footer">
                             <a class="btn btn-outline-primary" style="width: 150px"
                                href="{% url 'list-of-providers' %}">Cancel</a>
                             <button type="submit" class="btn btn-outline-primary float-end" style="width: 150px">
@@ -22,12 +24,12 @@
                             </button>
                         </div>
 
-
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    </body>
 
 
 

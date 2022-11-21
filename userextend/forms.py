@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm, PasswordResetForm, \
     SetPasswordForm
-from django.forms import TextInput, EmailInput
+from django.contrib.auth.models import User
+from django.forms import TextInput, EmailInput, Select, DateInput
 
 from userextend.models import UserExtend
 
@@ -8,15 +9,16 @@ from userextend.models import UserExtend
 class UserExtendForm(UserCreationForm):
     class Meta:
         model = UserExtend
-        fields = ['first_name', 'last_name', 'username', 'email', 'email_confirmation', 'phone_number']
+        fields = ['first_name', 'last_name','username', 'email', 'email_confirmation']
 
         widgets = {
             'first_name': TextInput(attrs={'placeholder': 'Please enter your first name', 'class': 'form-control'}),
             'last_name': TextInput(attrs={'placeholder': 'Please enter your last name', 'class': 'form-control'}),
-            'username': TextInput(attrs={'placeholder': 'Please enter your age', 'class': 'form-control'}),
+            'username': TextInput(attrs={'placeholder': 'Please enter your username', 'class': 'form-control'}),
             'email': EmailInput(attrs={'placeholder': 'Please enter your email', 'class': 'form-control'}),
             'email_confirmation': EmailInput(attrs={'placeholder': 'Please enter your email', 'class': 'form-control'}),
             'phone_number': TextInput(attrs={'placeholder': 'Please enter your phone number', 'class': 'form-control'}),
+
         }
 
     def __init__(self, *args, **kwargs):

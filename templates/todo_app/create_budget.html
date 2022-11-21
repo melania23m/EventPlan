@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %} Create a new provider {% endblock %}
+{% block title %} Create your budget plan{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -7,7 +7,7 @@
             <div class="col-md-6 offset-md-3"><br><br>
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="text-center"> Create a new provider</h3>
+                        <h3 class="text-center"> Create your budget plan</h3>
                     </div>
                     <form method="post">
                         {% csrf_token %}
@@ -16,7 +16,7 @@
                         </div>
                         <div class="card-footer">
                             <a class="btn btn-outline-primary" style="width: 150px"
-                               href="{% url 'list-of-providers' %}">Cancel</a>
+                               href="{% url 'budget' %}">Cancel</a>
                             <button type="submit" class="btn btn-outline-primary float-end" style="width: 150px">
                                 Save
                             </button>
